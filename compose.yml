@@ -1,0 +1,15 @@
+# docker run \
+# -it \
+# -v ~/ros-chat-app:/rca-vol \
+# ros:noetic-ros-core
+
+services:
+  rpf:
+    image: ros_noetic_map_rviz:latest
+    working_dir: /rca-vol
+    volumes:
+      - /mnt/d/ros-path-finder:/rca-vol
+    stdin_open: true # docker run -i
+    tty: true # -t
+
+# Run this compose with docker compose run --rm rcapp

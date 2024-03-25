@@ -1,0 +1,19 @@
+# Start container
+./x11dockerscript.sh
+# Compile if not compiled
+catkin_make
+# Source file
+source devel/setup.bash
+
+# Check container id
+docker ps -a
+# Open container in new terminals
+docker exec -it <container id> bash
+# Run in each terminal
+roscore
+rosrun map_server map_server path_finder/maps/map.yaml
+rosrun path_finder planner 
+rosrun rviz rviz
+
+#or 
+roslaunch path_finder path_finder_launch.launch
